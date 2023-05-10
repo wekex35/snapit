@@ -1,0 +1,41 @@
+.menu {
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 10px;
+
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 10px;
+    border: 1px solid #000;
+  }
+  
+  .menu ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .menu li {
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+  }
+  
+  .menu .action-btn {
+    width: 100px;
+  }
+  
+  .menu .dropdown {
+    display: none;
+  }
+  
+  .menu .dropdown select {
+    width: 150px;
+  }
+  
+  .menu .dropdown.active {
+    display: block;
+  }
+
+
+  
+  

@@ -1,7 +1,7 @@
 {
   "name": "hello-world-react-vite",
   "displayName": "hello-world-react-vite",
-  "description": "A hello world sample extension to demonstrate using React + Vite with the Webview UI Toolkit for VS Code.",
+  "description": "A SnapIt sample extension to demonstrate using React + Vite with the Webview UI Toolkit for VS Code.",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.46.0"
@@ -17,9 +17,16 @@
     "commands": [
       {
         "command": "hello-world.showHelloWorld",
-        "title": "Hello World (React + Vite): Show"
+        "title": "SnapCode"
       }
-    ]
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "hello-world.showHelloWorld"
+        }
+      ]
+    }
   },
   "scripts": {
     "install:all": "npm install && cd webview-ui && npm install",

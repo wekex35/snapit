@@ -9,10 +9,13 @@
   },
   "dependencies": {
     "@vscode/webview-ui-toolkit": "^1.2.1",
+    "html2canvas": "^1.4.1",
+    "prismjs": "^1.29.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
+    "@types/prismjs": "^1.26.0",
     "@types/react": "^17.0.33",
     "@types/react-dom": "^17.0.10",
     "@types/vscode-webview": "^1.57.0",

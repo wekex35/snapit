@@ -1,0 +1,141 @@
+html {
+    --ligatures: normal;
+    --font-features: initial;
+    --tab-size: 4;
+    --container-background-color: #abb8c3;
+    --box-shadow: rgba(0, 0, 0, 0.55) 0px 20px 68px;
+    --container-padding: 3em;
+    --window-border-radius: 8px;
+    box-sizing: border-box;
+}
+
+body {
+    padding-top: 32px;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    font-variant-ligatures: var(--ligatures);
+    font-feature-settings: var(--font-features);
+    tab-size: var(--tab-size);
+    user-select: none;
+}
+
+.screen-shot {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.space {
+    max-width: 100%;
+    overflow-x: scroll;
+    margin: auto;
+}
+
+.card-parent {
+    /* border-radius: 8px;
+    background: #32325d; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: var(--container-padding);
+    /* background-color: var(--container-background-color); */
+    width: max-content;
+
+}
+
+.window {
+    background: #32325d;
+    box-shadow:
+        -27.1px 62.5px 125px -25px rgba(50, 50, 93, .5),
+        -16.2px 37.5px 75px -37.5px rgba(0, 0, 0, .6);
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--window-border-radius);
+    /* box-shadow: var(--box-shadow); */
+    overflow: hidden;
+    resize: horizontal;
+    /* width: max-content; */
+    /* min-width: 100px; */
+    padding: 18px;
+    /* background-color: var(--vscode-editor-background); */
+}
+
+.navbar {
+    overflow: hidden;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.window-controls {
+    display: flex;
+    float: left;
+    margin-top: 2px;
+}
+
+.window-controls[hidden] {
+    display: none;
+}
+
+.window-title {
+    /* width of window controls (and a bit) so they don't overlap */
+    margin: 0 80px;
+}
+
+
+
+.dot {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.red {
+    background-color: #ff5f5a;
+}
+
+.yellow {
+    background-color: #ffbe2e;
+}
+
+.green {
+    background-color: #2aca44;
+}
+
+code[class*="language-"],
+pre[class*="language-"] {
+    background: transparent;
+    /* color: #e6ebf1; */
+    font-family: 'Source Code Pro', Consolas, Menlo, monospace;
+    font-size: 14px;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.3;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+    overflow: hidden;
+}
+
+.card-shine {
+  
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(to top right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 0.5) 70%,#fff);
+    pointer-events: none;
+    opacity: 0.2;
+  }
+  

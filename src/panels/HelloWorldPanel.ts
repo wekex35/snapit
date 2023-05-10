@@ -66,7 +66,7 @@ export class HelloWorldPanel {
         }
       );
       HelloWorldPanel.currentPanel = new HelloWorldPanel(panel, extensionUri);
-      
+
     }
   }
 
@@ -105,20 +105,36 @@ export class HelloWorldPanel {
     // The JS file from the React build output
     const scriptUri = getUri(webview, extensionUri, ["webview-ui", "build", "assets", "index.js"]);
 
-    window.onDidChangeTextEditorSelection(async (e) => {
+    type Mutable<Type> = {
+      -readonly [Key in keyof Type]: Type[Key];
+    };
+
+
+    const sendMessage = (type: string, value: string) => {
+      webview.postMessage({
+        type, value
+      });
+    };
+
+
+    const copyAndSend = async () => {
       await commands.executeCommand('editor.action.clipboardCopyWithSyntaxHighlightingAction');
-      env.clipboard.readText().then((text)=>{
-        webview.postMessage({
-          "type": "CODE",
-          "value": text
-        });
-        /* code */
+      env.clipboard.readText().then((text) => {
+        sendMessage("CODE", text);
+      });
+    };
+
+    window.onDidChangeTextEditorSelection(async (e) => {
+      (e.selections && e.selections.length === 1 && !(e.selections[0] as any).isEmpty) && copyAndSend();
     });
-		 
-    });
+
+
+    const editor = window.activeTextEditor;
+    if (editor && (editor.selections && editor.selections.length === 1 && !(editor.selections[0] as any).isEmpty)) { copyAndSend() };
+
     const nonce = getNonce();
 
-    
+
 
     // Tip: Install the es6-string-html VS Code extension to enable code highlighting below
     return /*html*/ `
@@ -129,7 +145,7 @@ export class HelloWorldPanel {
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
           <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src ${webview.cspSource}; script-src 'nonce-${nonce}';">
           <link rel="stylesheet" type="text/css" href="${stylesUri}">
-          <title>Hello World</title>
+          <title>SnapIt</title>
         </head>
         <body>
           <div id="root"></div>

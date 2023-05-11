@@ -1,41 +1,114 @@
 .menu {
-    background-color: rgba(255, 255, 255, 0.7);
-    padding: 10px;
 
-    background-color: rgba(255, 255, 255, 0.7);
+    position: fixed;
+    z-index: 5;
+    bottom: 50px;
+    left: 50%;
+    display: flex;
+
+    align-items: center;
     padding: 10px;
-    border: 1px solid #000;
-  }
-  
-  .menu ul {
+    border: 1px solid hsla(0, 0%, 100%, .2);
+    border-radius: 8px;
+    background: var(--panel-background);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, .6);
+    gap: 32px;
+    transform: translateX(-50%);
+}
+
+.menu ul {
     display: flex;
     list-style: none;
     margin: 0;
     padding: 0;
-  }
-  
-  .menu li {
+    
+}
+
+.menu li {
     display: flex;
     flex-direction: column;
     margin-right: 10px;
-  }
-  
-  .menu .action-btn {
+
+    
+}
+
+.menu .action-btn {
     width: 100px;
-  }
-  
-  .menu .dropdown {
-    display: none;
-  }
-  
-  .menu .dropdown select {
+}
+
+.menu .dropdown {
+    display: flex;
+    overflow: hidden;
+    height: 24px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 8px;
+    border: 1px solid hsla(0, 0%, 100%, .1);
+    border-radius: 6px;
+    background: transparent;
+    box-shadow: none;
+    color: hsla(0, 0%, 100%, .8);
+    cursor: default;
+    font-size: 13px;
+    font-weight: 500;
+    gap: 12px;
+    letter-spacing: .1px;
+    line-height: 16px;
+    outline: none;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
+}
+
+.menu .dropdown select {
     width: 150px;
-  }
-  
-  .menu .dropdown.active {
+}
+
+.menu .dropdown.active {
     display: block;
-  }
+}
 
 
-  
-  
+
+.menu label {
+    padding-bottom: 5px;
+    color: hsla(0, 0%, 100%, .4);
+    cursor: default;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .1px;
+    line-height: 14px;
+    white-space: nowrap;
+}
+
+/* Custom dropdown arrow */
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    /* Replace with your arrow icon */
+    background-repeat: no-repeat;
+    background-position: right center;
+
+
+}
+
+/* Dropdown styles */
+select {
+
+    /* Adjust width as needed */
+    padding: 2px 5px 2px 5px;
+    border: 1px solid #ccc;
+    font-weight: 10;
+    border-radius: 4px;
+    color: #dcdcdc;
+    font-size: 13px !important;
+    background-color: var(--background);
+
+}
+
+/* Hover and focus styles */
+select:hover,
+select:focus {
+    border-color: #888;
+    outline: none;
+
+}

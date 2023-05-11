@@ -12,7 +12,8 @@
     "html2canvas": "^1.4.1",
     "prismjs": "^1.29.0",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "zustand": "^4.3.8"
   },
   "devDependencies": {
     "@types/prismjs": "^1.26.0",

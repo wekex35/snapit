@@ -99,8 +99,6 @@ const StaticMenu: React.FC = () => {
                                <button>Export</button>
                         
                         )}
-
-                        
                     </li>
                 ))}
             </ul>

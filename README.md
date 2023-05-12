@@ -16,7 +16,7 @@
 ## How to Contribute
 We truly ❤️ pull requests! If you wish to help.
 
-Please read the [contributing](https://go-niom.github.io/niom-docs/docs/support/contributions) Guide
+Please read the [contributing](https://github.com/wekex35/snapit/wiki) Guide
 ## Stay in touch
 
 - Author - [Nirmal Mandal](https://www.linkedin.com/in/nirmal-mandal-275706110)

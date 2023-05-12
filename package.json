@@ -5,6 +5,10 @@
   "version": "0.0.1",
   "publisher": "wekex",
   "icon": "icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wekex35/snapit"
+  },
   "engines": {
     "vscode": "^1.46.0"
   },
@@ -56,5 +60,13 @@
     "os": "^0.1.2",
     "path": "^0.12.7",
     "ps": "^1.0.0"
-  }
+  } ,
+   "keywords": [
+    "code",
+    "screenshot",
+    "snippet",
+    "snap",
+    "clipboard",
+    "share"
+  ]
 }

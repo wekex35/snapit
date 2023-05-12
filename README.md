@@ -1,37 +1,26 @@
-# SnapIt (React + Vite)
+## Instructions for Using SnapIt: 📸
 
-This is an implementation of the default [SnapIt](https://github.com/microsoft/vscode-webview-ui-toolkit-samples/tree/main/default/hello-world) sample extension that demonstrates how to set up and use a [React](https://reactjs.org/) + [Vite](https://vitejs.dev/) + [Webview UI Toolkit](https://github.com/microsoft/vscode-webview-ui-toolkit) webview extension.
+1. 📌 Open the command palette by pressing Ctrl+Shift+P (Windows/Linux) or Cmd+Shift+P (OS X).
+2. 🔍 Search for "SnapIt" in the command palette and select it.
+3. 🖱️ Choose the code you want to capture as a screenshot.
+4. 📏 Adjust the width of the screenshot if desired.
+5. 💾 Click the shutter button to save the screenshot to your disk.
 
-![A screenshot of the sample extension.](./assets/hello-world-screenshot.png)
+**Tips: 💡**
 
-## Documentation
+- You can also start SnapIt by selecting the code, right-clicking, and clicking on the SnapIt option.
+- If you'd like to assign a hotkey for SnapIt, go to your keyboard shortcut settings and bind the "snapit.launch" action to a custom key combination.
+- If you prefer to copy the screenshot to the clipboard instead of saving it, simply click on the image and use the copy keyboard shortcut (Ctrl+C on Windows/Linux, Cmd+C on OS X). You can also customize this feature by binding the "snapit.launch" action to the copy command in your settings. 📋✂️
 
-For a deeper dive into how this sample works, read the guides below.
 
-- [Extension structure](./docs/extension-structure.md)
-- [Extension commands](./docs/extension-commands.md)
-- [Extension development cycle](./docs/extension-development-cycle.md)
+## How to Contribute
+We truly ❤️ pull requests! If you wish to help.
 
-## Run The Sample
+<!-- Please read the [contributing](https://go-niom.github.io/niom-docs/docs/support/contributions) Guide -->
+## Stay in touch
 
-```bash
-# Copy sample extension locally
-npx degit microsoft/vscode-webview-ui-toolkit-samples/frameworks/hello-world-react-vite hello-world
+- Author - [Nirmal Mandal](https://www.linkedin.com/in/nirmal-mandal-275706110)
 
-# Navigate into sample directory
-cd hello-world
+## License
 
-# Install dependencies for both the extension and webview UI source code
-npm run install:all
-
-# Build webview UI source code
-npm run build:webview
-
-# Open sample in VS Code
-code .
-```
-
-Once the sample is open inside VS Code you can run the extension by doing the following:
-
-1. Press `F5` to open a new Extension Development Host window
-2. Inside the host window, open the command palette (`Ctrl+Shift+P` or `Cmd+Shift+P` on Mac) and type `SnapIt (React + Vite): Show`
+Niom is [MIT licensed](LICENSE).

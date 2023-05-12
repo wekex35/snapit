@@ -1,8 +1,10 @@
 {
-  "name": "hello-world-react-vite",
-  "displayName": "hello-world-react-vite",
-  "description": "A SnapIt sample extension to demonstrate using React + Vite with the Webview UI Toolkit for VS Code.",
+  "name": "snapit",
+  "displayName": "SnapIt",
+  "description": "A SnapIt a simple way to beautiful snap of your code",
   "version": "0.0.1",
+  "publisher": "wekex",
+  "icon": "icon.png",
   "engines": {
     "vscode": "^1.46.0"
   },
@@ -10,20 +12,20 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:hello-world.showHelloWorld"
+    "onCommand:snapit.launch"
   ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "hello-world.showHelloWorld",
-        "title": "SnapCode"
+        "command": "snapit.launch",
+        "title": "SnapIt"
       }
     ],
     "menus": {
       "editor/context": [
         {
-          "command": "hello-world.showHelloWorld"
+          "command": "snapit.launch"
         }
       ]
     }
@@ -49,5 +51,10 @@
     "prettier": "^2.2.1",
     "typescript": "^4.1.3",
     "vscode-test": "^1.5.0"
+  },
+  "dependencies": {
+    "os": "^0.1.2",
+    "path": "^0.12.7",
+    "ps": "^1.0.0"
   }
 }

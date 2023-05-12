@@ -15,27 +15,28 @@ function App() {
   const [code, setCode] = useState('kj')
 
   useEffect(() => {
-    window.addEventListener('paste', async (event : any) => {
-      event.preventDefault(); // Prevent the default paste behavior
+    // window.addEventListener('paste', async (event : any) => {
+    //   event.preventDefault(); // Prevent the default paste behavior
     
-      const clipboardData = event.clipboardData;
-      if (clipboardData) {
-        const text = await clipboardData.getData('text/plain');
-        // Handle the pasted text here
-        console.log('Pasted text:', text);
-      }
-    });
+    //   const clipboardData = event.clipboardData;
+    //   if (clipboardData) {
+    //     const text = await clipboardData.getData('text/plain');
+    //     // Handle the pasted text here
+    //     console.log('Pasted text:', text);
+    //   }
+    // });
     window.addEventListener('message', async event => {
 
       const message = event.data; // The JSON data our extension sent
       switch (message.type) {
         case "CODE":
           setCode(message.value)
+          // document.execCommand('paste');
           break;
         default: console.log({message});
           break; 
       }
-      document.execCommand('paste');
+     
     });
   
    

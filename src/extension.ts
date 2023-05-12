@@ -1,14 +1,14 @@
 import { commands, ExtensionContext } from "vscode";
-import { HelloWorldPanel } from "./panels/HelloWorldPanel";
+import { SnapItdPanel } from "./panels/SnapItPanel";
 
 export function activate(context: ExtensionContext) {
   // Create the show SnapIt command
-  const showHelloWorldCommand = commands.registerCommand("hello-world.showHelloWorld", () => {
-    HelloWorldPanel.render(context);
+  const launchCommand = commands.registerCommand("snapit.launch", () => {
+    SnapItdPanel.render(context);
   });
 
   // Add command to the extension context
-  context.subscriptions.push(showHelloWorldCommand);
+  context.subscriptions.push(launchCommand);
 }
 
 

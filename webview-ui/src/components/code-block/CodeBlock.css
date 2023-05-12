@@ -1,8 +1,8 @@
 
 code[class*="language-"],
 pre[class*="language-"] {
-  background: transparent;
-  color: #e6ebf1;
+  background: transparent !important;
+
   font-family: 'Source Code Pro', Consolas, Menlo, monospace;
   font-size: 14px;
 	text-align: left;
@@ -21,8 +21,9 @@ pre[class*="language-"] {
 	-ms-hyphens: none;
 	hyphens: none;
   overflow: hidden;
+  border: none
 }
-
+/* 
 .token.comment,
 .token.block-comment,
 .token.prolog,
@@ -109,4 +110,4 @@ pre[class*="language-"] {
 .token.function,
 .token.keyword {
   font-weight: 600;
-}
+} */

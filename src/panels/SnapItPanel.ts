@@ -2,23 +2,26 @@ import { Disposable, Webview, WebviewPanel, window, Uri, ViewColumn, ExtensionCo
 import { getUri } from "../utilities/getUri";
 import { getNonce } from "../utilities/getNonce";
 
+import { homedir } from 'os';
+import path = require('path');
+import { writeFile, writeFileSync } from "fs";
 /**
- * This class manages the state and behavior of HelloWorld webview panels.
+ * This class manages the state and behavior of SnapItd webview panels.
  *
  * It contains all the data and methods for:
  *
- * - Creating and rendering HelloWorld webview panels
+ * - Creating and rendering SnapItd webview panels
  * - Properly cleaning up and disposing of webview resources when the panel is closed
  * - Setting the HTML (and by proxy CSS/JavaScript) content of the webview panel
  * - Setting message listeners so data can be passed between the webview and extension
  */
-export class HelloWorldPanel {
-  public static currentPanel: HelloWorldPanel | undefined;
+export class SnapItdPanel {
+  public static currentPanel: SnapItdPanel | undefined;
   private readonly _panel: WebviewPanel;
   private _disposables: Disposable[] = [];
 
   /**
-   * The HelloWorldPanel class private constructor (called only from the render method).
+   * The SnapItdPanel class private constructor (called only from the render method).
    *
    * @param panel A reference to the webview panel
    * @param extensionUri The URI of the directory containing the extension
@@ -45,16 +48,16 @@ export class HelloWorldPanel {
    */
   public static render(context: ExtensionContext) {
     const extensionUri = context.extensionUri;
-    if (HelloWorldPanel.currentPanel) {
+    if (SnapItdPanel.currentPanel) {
       // If the webview panel already exists reveal it
-      HelloWorldPanel.currentPanel._panel.reveal(ViewColumn.One);
+      SnapItdPanel.currentPanel._panel.reveal(ViewColumn.One);
     } else {
       // If a webview panel does not already exist create and show a new one
       const panel = window.createWebviewPanel(
         // Panel view type
-        "snapcode",
+        "SnapIt",
         // Panel title
-        "Snap Code",
+        "SnapIt",
         // The editor column the panel should be displayed in
         { viewColumn: ViewColumn.Beside, preserveFocus: true },
         // Extra panel configurations
@@ -65,7 +68,7 @@ export class HelloWorldPanel {
           localResourceRoots: [Uri.joinPath(extensionUri, "out"), Uri.joinPath(extensionUri, "webview-ui/build")],
         }
       );
-      HelloWorldPanel.currentPanel = new HelloWorldPanel(panel, extensionUri);
+      SnapItdPanel.currentPanel = new SnapItdPanel(panel, extensionUri);
 
     }
   }
@@ -74,7 +77,7 @@ export class HelloWorldPanel {
    * Cleans up and disposes of webview resources when the webview panel is closed.
    */
   public dispose() {
-    HelloWorldPanel.currentPanel = undefined;
+    SnapItdPanel.currentPanel = undefined;
 
     // Dispose of the current webview panel
     this._panel.dispose();
@@ -143,9 +146,12 @@ export class HelloWorldPanel {
         <head>
           <meta charset="UTF-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-          <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src ${webview.cspSource}; script-src 'nonce-${nonce}';">
+          <meta
+              http-equiv="Content-Security-Policy"
+              content="img-src vscode-resource: data: https:; script-src vscode-resource:; style-src 'unsafe-inline' vscode-resource:;"
+          />
           <link rel="stylesheet" type="text/css" href="${stylesUri}">
-          <title>SnapIt</title>
+          <title>Snapppppper</title>
         </head>
         <body>
           <div id="root"></div>
@@ -155,6 +161,15 @@ export class HelloWorldPanel {
     `;
   }
 
+//   <meta
+//   http-equiv="Content-Security-Policy"
+//   content="img-src vscode-resource: data: https:; script-src vscode-resource:; style-src 'unsafe-inline' vscode-resource:;"
+// <meta
+//     http-equiv="Content-Security-Policy"
+//     content="img-src vscode-resource: data: https:; script-src vscode-resource:; style-src 'unsafe-inline' vscode-resource:;"
+//   />
+// />
+
   /**
    * Sets up an event listener to listen for messages passed from the webview context and
    * executes code based on the message that is recieved.
@@ -163,15 +178,32 @@ export class HelloWorldPanel {
    * @param context A reference to the extension context
    */
   private _setWebviewMessageListener(webview: Webview) {
+    let lastUsedImageUri:any = Uri.file(path.resolve(homedir(), 'Desktop/snapit.png'));
+    const saveImage = async (data: any) => {
+      const uri = await window.showSaveDialog({
+        // eslint-disable-next-line @typescript-eslint/naming-convention
+        filters: { Images: ['png'] },
+        defaultUri: lastUsedImageUri
+      });
+      lastUsedImageUri = uri;
+      uri && writeFileSync(uri.fsPath, Buffer.from(data, 'base64'));
+    };
     webview.onDidReceiveMessage(
-      (message: any) => {
-        const command = message.command;
-        const text = message.text;
+      async (message: any) => {
+        console.log({hello : message});
+        
+        const command = message.type;
+        const value = message.value;
 
         switch (command) {
           case "hello":
             // Code that should run in response to the hello message command
-            window.showInformationMessage(text);
+            window.showInformationMessage(value);
+            
+          case "SAVE":
+            // Code that should run in response to the hello message command
+            window.showInformationMessage(value);
+            await saveImage(value);
             return;
           // Add more switch case statements here as more webview message commands
           // are created within the webview context (i.e. inside media/main.js)

@@ -21,9 +21,11 @@ pre[class*="language-"] {
 	-ms-hyphens: none;
 	hyphens: none;
   overflow: hidden;
-  border: none
+  border: none;
+  /* margin-top: -15px; */
+  margin-left: -3px;
 }
-/* 
+
 .token.comment,
 .token.block-comment,
 .token.prolog,
@@ -110,4 +112,4 @@ pre[class*="language-"] {
 .token.function,
 .token.keyword {
   font-weight: 600;
-} */
+}

@@ -12,7 +12,8 @@ function App() {
       text: "Hey there partner! 🤠",
     });
   }
-  const [code, setCode] = useState('kj')
+  const [code, setCode] = useState(`// the hello world program
+console.log('Hello World');`)
 
   useEffect(() => {
     // window.addEventListener('paste', async (event : any) => {

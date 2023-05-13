@@ -1,54 +1,78 @@
-
-
 body {
     background: var(--background);
+    padding: 0px;
+    margin: 5px 0px;
+    /* display: flex; 
+    align-items: center;
+    width:100%; */
+    /* background: var(--background);
     padding-top: 32px;
     display: flex;
-    flex-flow: column;
-    align-items: center;
+    
+   
     font-variant-ligatures: var(--ligatures);
     font-feature-settings: var(--font-features);
-    tab-size: var(--tab-size);
-    user-select: none;
+  
+    user-select: none; */
+    
 }
 
-.screen-shot {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    text-align: center;
-}
-
-.space {
-    max-width: 100%;
-    overflow-x: scroll;
+.code-card-main {
+    width: fit-content;
     margin: auto;
+   
 }
+
+.space {    
+    max-width: fit-content;
+    overflow: hidden;
+    margin: auto;
+    top: 60%;
+    -ms-transform: translateY(60%);
+    transform: translateY(60%);
+    overflow: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    /* max-width: 100%;
+    overflow: hidden;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    overflow: auto; 
+    -ms-overflow-style: none;  
+    scrollbar-width: none;  Firefox */
+}
+
+.space::-webkit-scrollbar {
+    display: none;
+  }
+  
+
 
 .card-parent {
     /* border-radius: 8px;*/
-    background: #32325d; 
-    display: flex;
+    background: #32325d;
     justify-content: center;
     align-items: center;
     padding: 5px;
     /* background-color: var(--container-background-color); */
-    width: max-content;
-    overflow: hidden;
 
+   
 }
 
 
 .window {
-    overflow: hidden;
-    width: max-content;
+   
     display: flex;
     min-height: 120px;
     flex-direction: column;
     align-items: stretch;
-    padding: 10px 18px 18px 10px ;
-    border: 1px solid hsla(0,0%,100%,.3);
+    padding: 10px 18px 18px 10px;
+    border: 1px solid hsla(0, 0%, 100%, .3);
     border-radius: 10px;
-    background: rgba(0,0,0,.75);
+    background: rgba(0, 0, 0, .75);
     /* background: rgba(255, 255, 255, 0.75); */
     transition: all .3s cubic-bezier(0.25, 0.1, 1, 1.75);
 }
@@ -102,11 +126,8 @@ body {
     right: 0;
     bottom: 0;
     left: 0;
-    background: linear-gradient(to top right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 0.5) 70%,#fff);
+    background: linear-gradient(to top right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 0.5) 70%, #fff);
     pointer-events: none;
     opacity: 0.2;
-  }
-  
+}
 
-
-  

@@ -55,9 +55,9 @@ export class SnapItdPanel {
       // If a webview panel does not already exist create and show a new one
       const panel = window.createWebviewPanel(
         // Panel view type
-        "SnapIt",
+        "SnapIt 📸",
         // Panel title
-        "SnapIt",
+        "SnapIt 📸",
         // The editor column the panel should be displayed in
         { viewColumn: ViewColumn.Beside, preserveFocus: true },
         // Extra panel configurations
@@ -77,6 +77,8 @@ export class SnapItdPanel {
    * Cleans up and disposes of webview resources when the webview panel is closed.
    */
   public dispose() {
+
+    
     SnapItdPanel.currentPanel = undefined;
 
     // Dispose of the current webview panel
@@ -121,10 +123,11 @@ export class SnapItdPanel {
 
 
     const copyAndSend = async () => {
+      if(SnapItdPanel.currentPanel){
       await commands.executeCommand('editor.action.clipboardCopyWithSyntaxHighlightingAction');
       env.clipboard.readText().then((text) => {
         sendMessage("CODE", text);
-      });
+      });}
     };
 
     window.onDidChangeTextEditorSelection(async (e) => {
@@ -133,7 +136,7 @@ export class SnapItdPanel {
 
 
     const editor = window.activeTextEditor;
-    if (editor && (editor.selections && editor.selections.length === 1 && !(editor.selections[0] as any).isEmpty)) { copyAndSend() };
+    if (editor && (editor.selections && editor.selections.length === 1 && !(editor.selections[0] as any).isEmpty)) { copyAndSend(); };
 
     const nonce = getNonce();
 
@@ -151,7 +154,7 @@ export class SnapItdPanel {
               content="img-src vscode-resource: data: https:; script-src vscode-resource:; style-src 'unsafe-inline' vscode-resource:;"
           />
           <link rel="stylesheet" type="text/css" href="${stylesUri}">
-          <title>Snapppppper</title>
+          <title>SnapIt 📸</title>
         </head>
         <body>
           <div id="root"></div>
@@ -160,16 +163,6 @@ export class SnapItdPanel {
       </html>
     `;
   }
-
-//   <meta
-//   http-equiv="Content-Security-Policy"
-//   content="img-src vscode-resource: data: https:; script-src vscode-resource:; style-src 'unsafe-inline' vscode-resource:;"
-// <meta
-//     http-equiv="Content-Security-Policy"
-//     content="img-src vscode-resource: data: https:; script-src vscode-resource:; style-src 'unsafe-inline' vscode-resource:;"
-//   />
-// />
-
   /**
    * Sets up an event listener to listen for messages passed from the webview context and
    * executes code based on the message that is recieved.

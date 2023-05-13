@@ -1,0 +1,145 @@
+.menu-parent {
+    position: fixed;
+    z-index: 5;
+    width: 100%;
+}
+
+.menu {
+    /* position: relative; */
+    display: flex ;
+    margin: auto;
+    z-index: 5;
+    max-width: max-content;
+}
+
+.menu-shutter {
+    display: flex !important;
+    width: 150px;
+    margin: auto;
+    z-index: 5;
+    display: table;
+    color: #fff;
+    align-items: center;
+    padding:  0px 5px; 
+    transition: 0.01s ease-in-out;
+}
+
+.menu-shutter-icon {
+    transition: 1s ease-in-out;
+    background-color: black;
+    border-radius: 120px;
+    margin: 0 3px;
+
+}
+
+.menu-shutter-icon:active {
+    transform: rotate(120deg) scale(1);
+}
+
+.menu-shutter-childs {
+    margin-top: 40px;
+    width: 20px;
+}
+
+.menu-shutter-childs:active {
+    transform: rotate(10deg) scale(1);
+}
+
+.menu-items {
+    border: 1px solid hsla(0, 0%, 100%, .2);
+    border-radius: 8px;
+    background: var(--panel-background);
+}
+
+.menu-item {
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    margin: 0px 5px;
+}
+
+.menu-label {
+    margin-top: 5px;
+    margin-bottom:3px;
+    color: hsla(0, 0%, 100%, .4);
+    cursor: default;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .1px;
+    line-height: 14px;
+    white-space: nowrap;
+    text-align: center;
+}
+
+/* Menu group animations */
+.menu-group-left, .menu-group-right{
+    margin: 10px 5px 0px 5px;
+    transition: 1s ease-in-out;
+}
+
+/* Left Menu Animation */
+.menu-group-left {
+    transform: translate(120px, 0);
+}
+
+.menu-group-left.active {
+    transform: translate(0px, 0);
+}
+
+/* Right Menu Animation */
+.menu-group-right {
+    transform: translate(-120px, 0);
+}
+
+.menu-group-right.active {
+    transform: translate(0px, 0);
+}
+
+/* Menu inputs */
+select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    /* Adjust width as needed */
+    padding: 2px 5px 2px 5px;
+    border: 1px solid #ccc;
+    font-weight: 10;
+    border-radius: 4px;
+    color: #dcdcdc;
+    font-size: 13px !important;
+    background-color: var(--background);
+    text-align: center;
+}
+
+
+.menu .dropdown {
+    display: flex;
+    overflow: hidden;
+    height: 24px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 8px;
+    border: 1px solid hsla(0, 0%, 100%, .1);
+    border-radius: 6px;
+    background: transparent;
+    box-shadow: none;
+    color: hsla(0, 0%, 100%, .8);
+    cursor: default;
+    font-size: 13px;
+    font-weight: 500;
+    gap: 12px;
+    letter-spacing: .1px;
+    line-height: 16px;
+    outline: none;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
+}
+
+.menu .dropdown select {
+    width: 150px;
+}
+
+.menu .dropdown.active {
+    display: block;
+}
+

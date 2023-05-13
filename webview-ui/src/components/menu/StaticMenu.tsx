@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import './Menu.css'
-import { Button } from '@vscode/webview-ui-toolkit';
-import useMenu from '../stores/useMenuStore';
+import './StaticMenu.css'
 import { shallow } from 'zustand/shallow'
 import useMenuStore from '../stores/useMenuStore';
 import { gradients, languages } from '../../data/menu-data';
 import Logo from '../svgs/Logo';
+import { CopyIcon, SettingIcon } from '../svgs/Icons';
+
 
 interface NameValue {
     name: string
@@ -18,7 +18,7 @@ interface MenuItem {
 }
 
 interface StaticMenu {
-    onShutterClick: () => void
+    onShutterClick: (isCopy: boolean) => void
 }
 
 const StaticMenu: React.FC<StaticMenu> = ({ onShutterClick }) => {
@@ -50,7 +50,6 @@ const StaticMenu: React.FC<StaticMenu> = ({ onShutterClick }) => {
         { label: 'Padding' },
         { label: 'Language', options: languages },
         { label: 'Dark Mode' },
-        { label: 'Export' },
     ];
 
     const handleGradientToggle = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -69,79 +68,74 @@ const StaticMenu: React.FC<StaticMenu> = ({ onShutterClick }) => {
         setSelectedLanguage(event.target.value);
     };
 
+    const handleShowMenu = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        const isShowMenu = !showMenu
+        var elementLeft = document.querySelector(".menu-group-left")
+        var elementRight = document.querySelector(".menu-group-right")
+
+       
+        elementLeft?.classList.toggle("active");
+        elementRight?.classList.toggle("active");
+
+        
+        setShowMenu(isShowMenu); 
+    }
+
     return (
-        <div className="main-parent">
+        <div className="menu-parent">
             <div className="menu">
-                <div className="settings" onClick={() => setShowMenu(!showMenu)} >
-                    <span className="icon" style={{ fontSize: showMenu ? "20px" : "50px" }}>⛭</span>
-                    <span className="title" style={{ display: showMenu ? "inline" : "none" }} >Settings</span>
+                <div className="menu-items menu-group-left" style={{ visibility: showMenu ? "visible" : 'hidden' }}>
+                    <div className="menu-item">
+                        <label className='menu-label' htmlFor="gradient-select">Gradient</label>
+                        <select id="gradient-select" value={selectedGradident} onChange={handleGradientToggle}>
+                            <option value="">Select Gradient</option>
+                            {(menuItems[0].options as []).map((option: any, index: any) => (
+                                <option key={index} value={option.value}  >
+                                    {option.name}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                    <div className="menu-item">
+                        <label className='menu-label' htmlFor="padding-range">Padding</label>
+                        <input
+                            type="range"
+                            id="padding-range"
+                            min="0"
+                            max="75"
+                            value={padding}
+                            onChange={handlePaddingChange}
+                        />
+                    </div>
                 </div>
-                <ul style={{ display: showMenu ? "inline" : "none" }} >
-                    {menuItems.map((menuItem, index) => (
-                        <li key={index}>
-                            {menuItem.label === 'Gradient' && (
-                                <>
-                                    <label htmlFor="gradient-select">Gradient:</label>
-                                    <select id="gradient-select" value={selectedGradident} onChange={handleGradientToggle}>
-                                        <option value="">Select Gradient</option>
-                                        {menuItem.options &&
-                                            menuItem.options.map((option: any, index) => (
-                                                <option key={index} value={option.value}  >
-                                                    {option.name}
-                                                </option>
-                                            ))}
-                                    </select>
-                                </>
-                            )}
-                            {menuItem.label === 'Padding' && (
-                                <>
-                                    <label htmlFor="padding-range">Padding:</label>
-                                    <input
-                                        type="range"
-                                        id="padding-range"
-                                        min="0"
-                                        max="75"
-                                        value={padding}
-                                        onChange={handlePaddingChange}
-                                    />
-                                </>
-                            )}
-                            {menuItem.label === 'Language' && (
-                                <>
-                                    <label htmlFor="language-select">Language:</label>
-                                    <select id="language-select" value={selectedLanguage} onChange={handleLanguageChange}>
-                                        <option value="">Select Language</option>
-                                        {menuItem.options &&
-                                            menuItem.options.map((option: any, index) => (
-                                                <option key={index} value={option}>
-                                                    {option}
-                                                </option>
-                                            ))}
-                                    </select>
-                                </>
-                            )}
-                            {menuItem.label === 'Dark Mode' && (
-                                <>
-                                    <label htmlFor="dark-mode-switch">Dark Mode:</label>
-                                    <input
-                                        type="checkbox"
-                                        id="dark-mode-switch"
-                                        checked={darkMode}
-                                        onChange={handleDarkModeToggle}
-                                    />
-                                </>
-                            )}
-                            {menuItem.label === 'Export' && (
-
-                                <button>Export</button>
-
-                            )}
-                        </li>
-                    ))}
-                </ul>
-
+                <div className="menu-shutter menu-items">
+                    <span className='menu-shutter-childs' ><SettingIcon onClick={handleShowMenu}/></span>
+                    <span className='menu-shutter-icon' style={{ width: "100px", float: 'left' }} onClick={() => onShutterClick(false)}>  <Logo /></span>
+                    <span className='menu-shutter-childs' onClick={() => onShutterClick(true)} > <CopyIcon /></span>
+                </div>
+                <div className="menu-items  menu-group-right" style={{ visibility: showMenu ? "visible" : 'hidden' }}>
+                    <div className="menu-item">
+                        <label className='menu-label' htmlFor="language-select">Language</label>
+                        <select id="language-select" value={selectedLanguage} onChange={handleLanguageChange}>
+                            <option value="">Select Language</option>
+                            {(menuItems[2].options as []).map((option: any, index) => (
+                                <option key={index} value={option}>
+                                    {option}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                    <div className="menu-item">
+                        <label className='menu-label' htmlFor="dark-mode-switch">Dark Mode</label>
+                        <input
+                            type="checkbox"
+                            id="dark-mode-switch"
+                            checked={darkMode}
+                            onChange={handleDarkModeToggle}
+                        />
+                    </div>
+                </div>
             </div>
-            <Logo className="shutter button" onClick={onShutterClick} />
         </div>
 
     );

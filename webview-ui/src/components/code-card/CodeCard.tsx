@@ -32,54 +32,33 @@ const CodeCard: React.FC<CodeCard> = ({ code }) => {
     )
 
     useEffect(() => {
-        // Dynamically load the selected theme CSS file
-    //     const themeLink = document.createElement("link");
-    //     themeLink.rel = "stylesheet";
-    //     themeLink.href = `prismjs/themes/${selectedTheme}.css`; // Replace with your theme file path
-    //     document.head.appendChild(themeLink);
-    // console.log(themeLink);
-    
-    //     // Cleanup function to remove the previous theme CSS
-    //     return () => {
-    //       document.head.removeChild(themeLink);
-    //     };
       }, [selectedTheme]);
 
 
-    const handleScreenshot = async () => {
+    const handleScreenshot = async (isCopy : boolean) => {
         if (codeRef.current) {
-            // html2canvas(codeRef.current).then((canvas) => {
-            //     const screenshot = canvas.toDataURL('image/png');
-            //     const link = document.createElement('a');
-            //     link.download = 'screenshot.png';
-            //     link.href = screenshot;
-            //     document.body.appendChild(link);
-            //     link.click();
-            //     document.body.removeChild(link);
-
-            // });
        
             const url = await domtoimage.toPng(codeRef.current);
             const data = url.slice(url.indexOf(',') + 1);
            
-            // if (config.shutterAction === 'copy') {
-            //   const binary = atob(data);
-            //   const array = new Uint8Array(binary.length);
-            //   for (let i = 0; i < binary.length; i++) array[i] = binary.charCodeAt(i);
-            //   const blob = new Blob([array], { type: 'image/png' });
-            //   navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
+            if (isCopy) {
+              const binary = atob(data);
+              const array = new Uint8Array(binary.length);
+              for (let i = 0; i < binary.length; i++) array[i] = binary.charCodeAt(i);
+              const blob = new Blob([array], { type: 'image/png' });
+              navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
             //   cameraFlashAnimation();
-            // } else {
+            } else {
               vscode.postMessage({ type: 'SAVE',value: data });
-            // }
+            }
         }
     };
-console.log({darkMode});
+
 
     return (
-        <div className="">
+        <>
             <StaticMenu onShutterClick={handleScreenshot}/>
-            <div className="space">
+            <div className="code-card-main">  <div className="space">
                 <div className="card-parent" style={{padding, backgroundImage: selectedGradident}}  ref={codeRef}>
                     <div className="window" style={{background: darkMode ? "rgba(0,0,0,.75)" : "rgba(255, 255, 255, 0.75)"  }}>
                         <div id="navbar">
@@ -93,8 +72,9 @@ console.log({darkMode});
                         <CodeBlock code={code} language={selectedLanguage} dark={darkMode}/>
                     </div>
                 </div>
-            </div>
-        </div>
+            </div></div>
+          
+        </>
     );
 };
 

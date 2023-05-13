@@ -1,7 +1,7 @@
 {
   "name": "snapit",
   "displayName": "SnapIt",
-  "description": "A SnapIt a simple way to beautiful snap of your code",
+  "description": "SnapIt is a simple way to take a beautiful snap of your code",
   "version": "0.0.1",
   "publisher": "wekex",
   "icon": "icon.png",
@@ -13,7 +13,7 @@
     "vscode": "^1.46.0"
   },
   "categories": [
-    "Other"
+    "uti"
   ],
   "activationEvents": [
     "onCommand:snapit.launch"
@@ -23,7 +23,7 @@
     "commands": [
       {
         "command": "snapit.launch",
-        "title": "SnapIt"
+        "title": "SnapIt 📸"
       }
     ],
     "menus": {

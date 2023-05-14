@@ -1,3 +1,49 @@
+
+
+<h1 align="center">
+  <br>
+     <a href="https://raw.githubusercontent.com/wekex35/snapit/master/icon.png" target="blank"><img src="https://raw.githubusercontent.com/wekex35/snapit/master/icon.png" width="200" alt="Niom Logo" /></a>
+  <br>
+  <b>SnapIt</b>
+  <br>
+
+
+</h1>
+ 
+<h3 align="center">
+    <a href="https://marketplace.visualstudio.com/items?itemName=wekex.snapit" target="_blank">SnapIt</a> is a simple way to take a beautiful snap of your code. </a> 
+    <br>
+</h3>
+ <h3 align="center">
+    <a
+    href="https://marketplace.visualstudio.com/items?itemName=wekex.snapit">
+    <img
+      src="https://img.shields.io/vscode-marketplace/v/wekex.snapit.svg?style=flat-square&label=vscode%20marketplace"
+      alt="version">
+  </a>
+  <a
+    href="https://github.com/wekex35/snapit/blob/master/README.md">
+    <img
+      src="https://img.shields.io/github/license/jinliming2/vscode-go-template.svg"
+      alt="MIT license">
+  </a>
+
+   <a
+    href="https://github.com/wekex35/snapit/pulls">
+    <img
+      src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg"
+      alt="welcome PRs">
+  </a>
+   <a
+    href="https://github.com/wekex35/snapit/wiki">
+    <img
+      src="https://badges.frapsoft.com/os/v1/open-source.svg?v=101"
+      alt="love open source">
+  </a>
+</h3>
+
+
+
 ## Instructions for Using SnapIt: 📸
 
 1. 📌 Open the command palette by pressing Ctrl+Shift+P (Windows/Linux) or Cmd+Shift+P (OS X).
@@ -15,13 +61,13 @@
 
 
 ### Launch SnapIt
-![Snapit-launch](https://github.com/wekex35/snapit/blob/master/assets/launch.gif)
+![Snapit-launch](https://raw.githubusercontent.com/wekex35/snapit/master/assets/launch.gif)
 
 ### Gradients and Padding
-![Gradients](https://github.com/wekex35/snapit/blob/master/assets/gradients.gif)
+![Gradients](https://raw.githubusercontent.com/wekex35/snapit/master/assets/gradients.gif)
 
 ### Language and Dark/Light Mode 
-![language-select](https://github.com/wekex35/snapit/blob/master/assets/launch.gif)
+![language-select](https://raw.githubusercontent.com/wekex35/snapit/master/assets/launch.gif)
 
 ## How to Contribute
 We truly ❤️ pull requests! If you wish to help.

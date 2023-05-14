@@ -2,7 +2,7 @@
   "name": "snapit",
   "displayName": "SnapIt",
   "description": "SnapIt is a simple way to take a beautiful snap of your code",
-  "version": "0.0.2",
+  "version": "0.0.5",
   "publisher": "wekex",
   "icon": "icon.png",
   "repository": {
@@ -13,7 +13,7 @@
     "vscode": "^1.78.0"
   },
   "categories": [
-    "uti"
+    "Other"
   ],
   "activationEvents": [
     "onCommand:snapit.launch"
